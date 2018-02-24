@@ -24,12 +24,10 @@ public class Kontakt extends SugarRecord {
         }
     }
 
-    public String getFullKontakt(){
-        if (!nazwa.equals("") || !numer.equals("")) {
-
-            return this.getId() + " | " + notNull(nazwa) + " | " + notNull(numer) + "\n";
-        } else {
-            return "";
-        }
+    public String getNazwa(){
+        return notNull(nazwa);
+    }
+    public String getNumer(){
+        return notNull(numer);
     }
 }

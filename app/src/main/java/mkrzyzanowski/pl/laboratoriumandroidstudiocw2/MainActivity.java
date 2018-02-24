@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,14 +12,15 @@ import com.orm.SchemaGenerator;
 import com.orm.SugarContext;
 import com.orm.SugarDb;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     EditText nazwaText;
     EditText numerText;
     EditText delNumer;
-    TextView textBox;
+
+    TextView textID;
+    TextView textNAZWA;
+    TextView textNUMER;
 
 
     @Override
@@ -29,9 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         nazwaText = findViewById(R.id.nazwaText);
         numerText = findViewById(R.id.numerText);
-        textBox = findViewById(R.id.textBox);
+        textID = findViewById(R.id.textID);
+        textNAZWA = findViewById(R.id.textNAZWA);
+        textNUMER = findViewById(R.id.textNUMER);
+
+
         delNumer = findViewById(R.id.delNumer);
-        textBox.setMovementMethod(new ScrollingMovementMethod());
+
         SugarContext.init(this);
         SchemaGenerator schemaGenerator = new SchemaGenerator(this);
         schemaGenerator.createDatabase(new SugarDb(this).getDB());
@@ -61,11 +65,18 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
     public void updateData(View view){
-        String text = "";
+        String textIDs = "";
+        String textNAZWAs = "";
+        String textNUMERs = "";
+
         for (Kontakt k : Kontakt.listAll(Kontakt.class)){
-            text += k.getFullKontakt();
+            textIDs += k.getId().toString() + "\n";
+            textNAZWAs += k.getNazwa() + "\n";
+            textNUMERs += k.getNumer() + "\n";
         }
-        textBox.setText(text);
+        textID.setText(textIDs);
+        textNAZWA.setText(textNAZWAs);
+        textNUMER.setText(textNUMERs);
     }
 
     public void removeData(View view){
