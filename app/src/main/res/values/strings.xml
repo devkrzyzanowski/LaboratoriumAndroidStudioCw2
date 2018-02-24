@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LaboratoriumAndroidStudioCw2</string>
+    <string name="nazwa">Nazwa</string>
+    <string name="numer">Numer</string>
+    <string name="zawarto_bazy">Zawartość bazy:</string>
+    <string name="usun">USUN</string>
+    <string name="dodaj">DODAJ</string>
+</resources>
